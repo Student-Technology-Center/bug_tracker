@@ -23,11 +23,20 @@
                 Click a button to view a bug
             </h2>
             <h4>Bug:</h4>
-            <textarea readonly="true" id='bug-info'></textarea>
+            <textarea class='text-box' readonly="true" id='bug-info'></textarea>
             <h4>Recreaction:</h4>
-            <textarea readonly="true" id='bug-recreate'></textarea>
+            <textarea class='text-box' readonly="true" id='bug-recreate'></textarea>
             <h4>Submitted by:</h4>
-            <span class='text' id='user'>...</span>
+            <span style='margin-bottom: 64px' class='text' id='user'>...</span>
+
+            <h4>Mark as..</h4>
+            <select id='resolved'>
+                <option value='True'>Fixed</option>
+                <option value='False'>Active</option>
+            </select>
+            <br>
+            <br>
+            <button id='resolved-button'>Submit</button>
         </div>
         <ul>
             {% for i in bugs %}

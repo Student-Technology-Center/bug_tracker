@@ -44,4 +44,32 @@ def get(request, pk):
         }
     })
 
+def mark(request, pk):
+    context = {}
 
+    if not request.user.is_superuser:
+        return JsonResponse({
+            'status':'failed',
+            'message':"User isn't admin.",
+            'resolved':'false'
+        })
+
+    resolved = request.GET.get('resolved', False)
+    resolved_bool = True if resolved == 'True' else False
+
+    if resolved:
+        print(resolved_bool)
+        bug_report = BugReport.objects.get(pk=pk)
+        bug_report.resolved = resolved_bool
+        bug_report.save()
+        return JsonResponse({
+            'status':'success',
+            'message':'Marked as {}'.format(resolved),
+            'resolved':'true' if (bug_report.resolved) else 'false'
+        })
+
+    return JsonResponse({
+        'status':'failed',
+        'message':'Something went wrong.',
+        'resolved':'true' if (bug_report.resolved) else 'false'
+    })

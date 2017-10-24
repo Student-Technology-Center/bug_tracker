@@ -41,6 +41,23 @@ ul li {
     margin-bottom: auto;
 }
 
+#resolved-button {
+    height: 50px;
+    width: 100px;
+
+    border: 2px solid black;
+    border-radius: 1px;
+    background-color: white;
+
+    transition: .3s;
+}
+
+#resolved-button:hover {
+    color: white;
+    background-color:black;
+    cursor: pointer;
+}
+
 ul li button {
     display: block;
 
@@ -54,35 +71,43 @@ ul li button {
     -webkit-appearance: none;
 }
 
+ul li button:hover {
+    cursor: pointer;
+}
+
 ul li button:focus {
     outline-width: 0;
 }
 
 #info-lab {
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-
-    height: 90%;
     width: 40%;
 
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
+    border: 2px solid black;
 
     margin-bottom: 32px;
 
-    position: fixed;
-
     text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .text {
     margin-top: 32px;
 }
 
+.text-box {
+    height: 200px;
+}
+
 #bug-recreate,
 #bug-info {
-    height: 10%;
     width: 90%;
 
     resize: none;
