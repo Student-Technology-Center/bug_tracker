@@ -1,0 +1,42 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>
+            Admin
+        </title>
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+
+        <script src="{% static 'js/admin_request.js' %}"> </script>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bug_admin.css' %}">
+    </head>
+    <body>
+        <div id='info-lab'>
+            <h2>
+                Click a button to view a bug
+            </h2>
+            <h4>Bug:</h4>
+            <textarea readonly="true" id='bug-info'></textarea>
+            <h4>Recreaction:</h4>
+            <textarea readonly="true" id='bug-recreate'></textarea>
+            <h4>Submitted by:</h4>
+            <span class='text' id='user'>...</span>
+        </div>
+        <ul>
+            {% for i in bugs %}
+                {% if i.resolved %}
+                    <li > <button class='bug-button' style='background-color: #5dc16a'>{{ i.pk }}: by {{ i.user.first_name }} {{ i.user.last_name }}</button> <p style='display:none;'>{{i.pk}}</p> </li>
+                {% else %}
+                    <li> <button class='bug-button' style='background-color: #aa4b54'>{{ i.pk }}: by {{ i.user.first_name }} {{ i.user.last_name }} </button> <p style='display:none;'>{{i.pk}}</p> </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+#body-title h1 {
+    margin-top: 0;
+}
+
+#body-center {
+    opacity: 1;
+    background-color: white;
+}
+
+body p {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#bug-recreate,
+#bug-info {
+    height: 10%;
+    width: 90%;
+
+    resize: none;
+    margin-top: 12px;
+    padding: 0;
+    
+    border: 1px solid black;
+    border-radius: 0.5px;
+}
+
+#bug-submit {
+    margin-top: 12px;
+    background-color: white;
+    font-size: 15px;
+    border: solid 3px black;
+    
+    border-radius: 6px;
+    padding: 12px;
+
+    transition: .1s;
+}
+
+#bug-submit:hover {
+    cursor: pointer;
+    transition: .1s;
+
+    background-color: black;
+    color: white;
+}

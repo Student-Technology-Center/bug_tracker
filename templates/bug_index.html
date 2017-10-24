@@ -1,12 +1,50 @@
+{% load static %}
+
 <html>
     <head>
         <title>
             WWUSTC Bug Tracker
         </title>
+
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bug_index.css' %}">
+
+        <script src="{% static 'js/submit_bug.js' %}"></script>
+        <script>
+            var csrf_token = '{{ csrf_token }}'
+        </script>
     </head>
     <body>
+        <div id='body-center'>
+            <div id='body-title'>
+                <h1>Submit a bug.</h1>
+                <img id='bee' src='{% static 'icons/bee.svg' %}'>
+            </div>
+            <div id='body-form'>
+                <h3>Give a detailed report of the bug</h3>
+                <textarea maxlength='300' placeholder="An hour won't submit." id='bug-info'></textarea>
+                <h5><span id='info-length'>0</span>/300</h5>
+                <h3>How can we recreate it?</h3>
+                <textarea maxlength='300' placeholder='Click this 5 times and..' id='bug-recreate'></textarea>
+                <h5><span id='recreate-length'>0</span>/300</h5>
+                <input type='submit' id='bug-submit'>
+                <h4 id='warning' style='color: red; display: none;'>Please enter info before submitting.</h4>
+            </div>
+            {% if user.is_superuser %}
+                <br>
+                <a style='font-size: 20px;' href='/bug/admin/'>Go to admin page.</a>
+            {% endif %}
+        </div>
         <p>
-            Log some bugs yo.
+            Thank you for submitting feedback. 
+            <a href='/'>Go back</a>
         </p>
     </body>
 </html>
