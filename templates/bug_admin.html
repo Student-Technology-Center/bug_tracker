@@ -18,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/bug_admin.css' %}">
     </head>
     <body>
-        <div id='info-lab'>
+        <div id='info-lab' style="margin-bottom: 24px;">
             <h2>
                 Click a button to view a bug
             </h2>
@@ -33,6 +33,7 @@
             <select id='resolved'>
                 <option value='True'>Fixed</option>
                 <option value='False'>Active</option>
+                <option value='delete'>Deleted</option>
             </select>
             <br>
             <br>

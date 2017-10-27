@@ -55,11 +55,20 @@ def mark(request, pk):
         })
 
     resolved = request.GET.get('resolved', False)
+
+    bug_report = BugReport.objects.get(pk=pk)
+
+    if resolved == 'delete':
+        bug_report.delete()
+        return JsonResponse({
+            'status':'success',
+            'message':'Deleted entry.',
+            'resolved':'delete'
+        })
+
     resolved_bool = True if resolved == 'True' else False
 
     if resolved:
-        print(resolved_bool)
-        bug_report = BugReport.objects.get(pk=pk)
         bug_report.resolved = resolved_bool
         bug_report.save()
         return JsonResponse({

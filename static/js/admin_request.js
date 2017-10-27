@@ -26,17 +26,17 @@ $(document).ready(function () {
                 type: 'GET',
                 url: '/bug/api/mark/' + currentPk + '/?resolved=' + answer,
                 success: function(data) {
-                    console.log(data.resolved)
                     if (data.resolved === 'true') {
                         currentButton.css({
                             'background-color': '#5dc16a'
                         });
-                        console.log('goin green')
+                    } 
+                    else if (data.resolved == 'delete') {
+                        currentButton.remove()
                     } else {
                         currentButton.css({
                             'background-color': '#aa4b54'
                         });
-                        console.log('goin red')
                     }
                 }
             })
