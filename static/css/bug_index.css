@@ -44,3 +44,20 @@ body p {
     background-color: black;
     color: white;
 }
+
+#helbert {
+    visibility: hidden;
+    position: fixed;
+    bottom: -200;
+    left: 0;
+    height: 100px;
+    width: 100px;
+
+    z-index: 999999999;
+}
+
+#helbert-help {
+    margin: 16px;
+    visibility: none;
+    opacity: 0.0;
+}

@@ -44,7 +44,7 @@ $(document).ready(function () {
                         }, 500, function() {
                             $('#body-center').css({
                                 'display':'none'
-                            }, 1)
+                            });
                         })
                     }
                 },
@@ -52,3 +52,20 @@ $(document).ready(function () {
         }
     });
 });
+
+window.setTimeout(function() {
+    $('#helbert').css({
+        'visibility':'visible'
+    })
+    $('#helbert').animate({
+        'bottom':'25%'
+    }, 'slow').delay(3000)
+    $('#helbert').animate({
+        'bottom':'40%'
+    }, 'fast', function() {
+        $('#helbert-help').css({
+            'visibility':'visible',
+            'opacity':'1.0'
+        })
+    })
+}, 8000);
