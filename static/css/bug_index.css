@@ -48,7 +48,7 @@ body p {
 #helbert {
     visibility: hidden;
     position: fixed;
-    bottom: -200;
+    bottom: -300;
     left: 0;
     width: 150px;
     z-index: 999999999;
@@ -58,4 +58,15 @@ body p {
     margin: 16px;
     visibility: none;
     opacity: 0.0;
+}
+
+#chat-prompt {
+    padding-top: 0px;
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-bottom: 0;
 }
