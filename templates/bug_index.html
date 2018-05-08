@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/bug_index.css' %}">
 
         <script src="{% static 'js/submit_bug.js' %}"></script>
+        <script src="{% static 'js/helper.js' %}"></script>
         <script>
             var csrf_token = '{{ csrf_token }}'
         </script>
@@ -58,7 +59,7 @@
                     You look like you need help, 
                     my names Helbert.
                 </h3>
-                <img id='helpber-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
+                <img id='helbert-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
             </div>
         </div>
         <div id='chat-prompt'>
