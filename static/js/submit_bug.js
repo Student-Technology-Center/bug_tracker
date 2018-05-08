@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#chat-prompt').click(function (){
         $('#chat-prompt').css({
             'display':'none'
@@ -34,6 +35,7 @@ $(document).ready(function () {
         $('#recreate-length').text(amt.length)
     })
 
+
     $('#bug-submit').click(function() {
         var info = $('#bug-info').val()
         var recreate = $('#bug-recreate').val()
@@ -55,6 +57,7 @@ $(document).ready(function () {
         }
 
         if (submit) {
+
             $.ajax({
                 type: 'POST',
                 url: '/bug/api/submit/',
@@ -72,6 +75,9 @@ $(document).ready(function () {
                             $('#body-center').css({
                                 'display':'none'
                             });
+                            $('#return').css({
+                                'display':'block'
+                            });
                         })
                     }
                 },
@@ -79,26 +85,3 @@ $(document).ready(function () {
         }
     });
 });
-/*
-window.setTimeout(function() {
-
-    var summon = document.createElement('audio');
-    summon.setAttribute('src', '/static/media/man_noise.wav');
-
-    $('#helbert').css({
-        'visibility':'visible'
-    })
-    $('#helbert').animate({
-        'bottom':'-135'
-    }, 'slow').delay(3000)
-    $('#helbert').animate({
-        'bottom':'0'
-    }, 'fast', function() {
-        summon.play();
-        $('#helbert-help').css({
-            'visibility':'visible',
-            'opacity':'1.0'
-        })
-    })
-}, 8000);
-*/

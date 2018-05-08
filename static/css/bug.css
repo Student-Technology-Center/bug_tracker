@@ -34,7 +34,7 @@ body {
 }
 
 #body-center {
-    width: 45%;
+    width: 50%;
     min-width: 250px;
     max-width: 1000px;
     height: 100%;
@@ -46,4 +46,22 @@ body {
     text-align: center;
 
     overflow: hidden;
+}
+
+.button {
+    margin-top: 12px;
+    background-color: white;
+    font-size: 15px;
+    border: solid 2px black;
+    border-radius: 6px;
+    padding: 12px;
+    transition: .1s;
+}
+
+.button:hover {
+    cursor: pointer;
+    transition: .1s;
+
+    background-color: black;
+    color: white;
 }

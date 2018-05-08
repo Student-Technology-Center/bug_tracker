@@ -15,10 +15,12 @@
         <script src="{% static 'js/admin_request.js' %}"> </script>
 
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bug_admin.css' %}">
     </head>
+
     <body>
-        <div id='info-lab' style="margin-bottom: 24px;">
+        <div id='info-lab'>
             <h2>
                 Click a button to view a bug
             </h2>
@@ -39,7 +41,7 @@
             </select>
             <br>
             <br>
-            <button id='resolved-button'>Submit</button>
+            <input type="submit" class='button' id='resolved-button' />
         </div>
         <ul>
             {% for i in bugs %}
@@ -51,4 +53,5 @@
             {% endfor %}
         </ul>
     </body>
+
 </html>

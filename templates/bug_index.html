@@ -45,12 +45,13 @@
 
                 <br><br>
 
-                <input type='submit' id='bug-submit'>
+                <input type='submit' class='button' id='bug-submit'>
                 <h4 id='warning' style='color: red; display: none;'>Please enter info before submitting.</h4>
             </div>
             {% if user.is_superuser %}
-                <br>
-                <a style='font-size: 20px;' href='/bug/admin/'>Go to admin page.</a>
+                <form action="/bug/admin">
+                    <input type='submit' class='button' value="Go to admin page" />
+                </form>
             {% endif %}
             <div id='helbert'>
                 <h3 id='helbert-help'>
@@ -63,7 +64,7 @@
         <div id='chat-prompt'>
             <h4 id='live-chat'>Live assistance</h4>
         </div>
-        <p style='opacity: 0.0;' id='return'>
+        <p id='return'>
             Thank you for submitting feedback. 
             <a href='/'>Go back</a>
         </p>
