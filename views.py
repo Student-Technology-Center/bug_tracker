@@ -3,7 +3,8 @@ from bug_tracker.models import BugReport
 
 def index(request):
 
-    context = {}
+    context = { "teams" : BugReport.TEAM_CHOICES }
+    print(BugReport.TEAM_CHOICES)
 
     return render(
         request,

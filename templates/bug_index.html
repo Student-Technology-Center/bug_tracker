@@ -34,6 +34,17 @@
                 <h3>How can we recreate it?</h3>
                 <textarea maxlength='300' placeholder='Click this 5 times and..' id='bug-recreate'></textarea>
                 <h5><span id='recreate-length'>0</span>/300</h5>
+
+                <h3>What team is this going to?</h3>
+
+                <select id='bug-team'>
+                    {% for k, v in teams %}
+                        <option value={{ k }}>{{ v }}</option>
+                    {% endfor %}
+                </select>
+
+                <br><br>
+
                 <input type='submit' id='bug-submit'>
                 <h4 id='warning' style='color: red; display: none;'>Please enter info before submitting.</h4>
             </div>
@@ -46,7 +57,7 @@
                     You look like you need help, 
                     my names Helbert.
                 </h3>
-                <img src='{% static "media/man_1.png" %}' alt='this is a peacock'>
+                <img id='helpber-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
             </div>
         </div>
         <p style='opacity: 0.0;' id='return'>

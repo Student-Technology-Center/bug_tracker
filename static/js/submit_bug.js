@@ -12,6 +12,7 @@ $(document).ready(function () {
     $('#bug-submit').click(function() {
         var info = $('#bug-info').val()
         var recreate = $('#bug-recreate').val()
+        var team = $('#bug-team option:selected').text()
         var submit = false;
 
         if (info == '' || recreate == '') {
@@ -35,6 +36,7 @@ $(document).ready(function () {
                 data: {
                     'info': info,
                     'recreate': recreate,
+                    'team': team,
                     'csrfmiddlewaretoken': csrf_token
                 },
                 success: function(data) {
@@ -54,15 +56,20 @@ $(document).ready(function () {
 });
 
 window.setTimeout(function() {
+
+    var summon = document.createElement('audio');
+    summon.setAttribute('src', '/static/media/man_noise.wav');
+
     $('#helbert').css({
         'visibility':'visible'
     })
     $('#helbert').animate({
-        'bottom':'25%'
+        'bottom':'-100'
     }, 'slow').delay(3000)
     $('#helbert').animate({
-        'bottom':'40%'
+        'bottom':'0'
     }, 'fast', function() {
+        summon.play();
         $('#helbert-help').css({
             'visibility':'visible',
             'opacity':'1.0'

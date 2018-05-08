@@ -50,9 +50,7 @@ body p {
     position: fixed;
     bottom: -200;
     left: 0;
-    height: 100px;
-    width: 100px;
-
+    width: 150px;
     z-index: 999999999;
 }
 

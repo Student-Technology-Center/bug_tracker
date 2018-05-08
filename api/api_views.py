@@ -4,9 +4,10 @@ from bug_tracker.models import BugReport
 def submit(request):
     info = request.POST.get('info', False)
     recreate = request.POST.get('recreate', False)
+    team = request.POST.get('team', False)
 
     for i in BugReport.objects.all():
-        print("{} by {}: {} recreated by {}".format(i.pk, i.user.username, i.info, i.recreation))
+        print("{} by {} for {}: {} recreated by {}".format(i.pk, i.user.username, i.team, i.info, i.recreation))
     
     if (len(info) > 300 or 
         len(recreate) > 300 or
@@ -20,7 +21,8 @@ def submit(request):
     if info and recreate:
         new_report = BugReport.objects.create(info=info,
                                               recreation=recreate,
-                                              user=request.user)
+                                              user=request.user,
+                                              team=team)
 
 
     return JsonResponse({
@@ -40,6 +42,7 @@ def get(request, pk):
             'pk': str(bug_report.pk),
             'report': str(bug_report.info),
             'recreation': str(bug_report.recreation),
+            'team': str(bug_report.team),
             'full_name': "{} {}".format(bug_report.user.first_name, bug_report.user.last_name)
         }
     })

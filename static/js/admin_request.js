@@ -12,6 +12,7 @@ $(document).ready(function () {
             success: function(data) {
                 $('#bug-info').text(data.bugReport.report)
                 $('#bug-recreate').text(data.bugReport.recreation)
+                $('#bug-team').text(data.bugReport.team)
                 $('#user').text(data.bugReport.full_name)
             }
         })
