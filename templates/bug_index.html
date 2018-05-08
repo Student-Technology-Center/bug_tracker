@@ -36,11 +36,11 @@
                 <textarea maxlength='300' placeholder='Click this 5 times and..' id='bug-recreate'></textarea>
                 <h5><span id='recreate-length'>0</span>/300</h5>
 
-                <h3>What team is this going to?</h3>
+                <h3>Which team is this going to?</h3>
 
-                <select id='bug-team'>
+                <select class='team-select' id='bug-team'>
                     {% for k, v in teams %}
-                        <option value={{ k }}>{{ v }}</option>
+                        <option class='team-select' value={{ k }}>{{ v }}</option>
                     {% endfor %}
                 </select>
 

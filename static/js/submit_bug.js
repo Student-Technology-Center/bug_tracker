@@ -1,15 +1,6 @@
-$(document).ready(function () {
+/* Handles submitting a bug to the backend */
 
-    $('#helbert-img').click(function (){
-        $('#helbert-help').css({
-            'visibility':'none',
-            'opacity':'0.0'
-        })
-        $('#helbert').animate({
-            'bottom':'-300',
-            'visibility':'none'
-        }, 'fast')
-    })
+$(document).ready(function () {
 
     $('#bug-info').keyup(function (){
         var amt = $(this).val()
@@ -43,7 +34,6 @@ $(document).ready(function () {
         }
 
         if (submit) {
-
             $.ajax({
                 type: 'POST',
                 url: '/bug/api/submit/',
@@ -68,6 +58,6 @@ $(document).ready(function () {
                     }
                 },
             })
-        }
+        } // All aboard the closing bracket train!
     });
 });
