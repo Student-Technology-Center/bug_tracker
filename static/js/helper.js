@@ -14,7 +14,7 @@ $(document).ready(function () {
         summon.setAttribute('src', '/static/media/man_noise.wav');
 
         $('#helbert').css({
-            'visibility':'visible'
+            'display':'block'
         })
         $('#helbert').animate({
             'bottom':'-135'
@@ -24,23 +24,27 @@ $(document).ready(function () {
         }, 'fast', function() {
             summon.play();
             $('#helbert-help').css({
-                'visibility':'visible',
+                'display':'block',
                 'opacity':'1.0'
             })
+            $('#helbert-img').on('click', helbertClick);
         })
     })
 
-    $('#helbert-img').click(function (){
+    var helbertClick = function(){
         $('#helbert-help').css({
-            'visibility':'none',
+            'display':'none',
             'opacity':'0.0'
         })
         $('#helbert').animate({
             'bottom':'-300',
-            'visibility':'none'
+            'display':'none'
         }, 'fast')
         $('#chat-prompt').css({
             'display':'block'
         })
-    })
+        $('#helbert-img').off('click');
+    }
+
+    //$('#helbert-img').click(helbertClick);
 });  

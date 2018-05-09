@@ -34,7 +34,8 @@ body p {
 /* Helbert and his related code */
 
 #helbert {
-    visibility: hidden;
+    display: none;
+    /*visibility: hidden;*/
     position: fixed;
     bottom: -300;
     left: 0;
@@ -44,7 +45,8 @@ body p {
 
 #helbert-help {
     margin: 16px;
-    visibility: none;
+    display: none;
+    /*visibility: none;*/
     opacity: 0.0;
 }
 
