@@ -11,16 +11,20 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous">
         </script>
+        <script src="{% static 'js/submit_bug.js' %}"></script>
+        <script src="{% static 'js/helper.js' %}"></script>
+        <script>
+            var csrf_token = '{{ csrf_token }}';
+        </script>
+        <script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'semantic/components/dropdown.min.js' %}"></script>
+
 
         <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/bug_index.css' %}">
-
-        <script src="{% static 'js/submit_bug.js' %}"></script>
-        <script src="{% static 'js/helper.js' %}"></script>
-        <script>
-            var csrf_token = '{{ csrf_token }}'
-        </script>
+        <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'semantic/components/dropdown.min.css' %}" />
     </head>
     <body>
         <div id='body-center'>
@@ -38,23 +42,25 @@
 
                 <h3>Which team is this going to?</h3>
 
-                <select class='team-select' id='bug-team'>
+                <select class='ui dropdown' id='bug-team'>
                     {% for k, v in teams %}
-                        <option class='team-select' value={{ k }}>{{ v }}</option>
+                        <option value={{ k }}>{{ v }}</option>
                     {% endfor %}
                 </select>
 
                 <br><br>
 
-                <input type='submit' class='button' id='bug-submit'>
                 <h4 id='warning' style='color: red; display: none;'>Please enter info before submitting.</h4>
-            </div>
-            {% if user.is_superuser %}
+
+                <input type='submit' class='ui primary button' id='bug-submit'>
+                {% if user.is_superuser %}
+                <br><br>
                 <form action="/bug/admin">
-                    <input type='submit' class='button' value="Go to admin page" />
+                    <input type='submit' class='ui button' value="Go to admin page" />
                 </form>
-            {% endif %}
-            <div id='helbert'>
+                {% endif %}
+            </div>
+            <div style='bottom:-300;' id='helbert'>
                 <h3 id='helbert-help'>
                     You look like you need help, 
                     my names Helbert.

@@ -1,5 +1,8 @@
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 from bug_tracker.models import BugReport
+from bug_tracker.forms import BugForm
+from django import forms
 
 def submit(request):
     info = request.POST.get('info', False)
@@ -85,3 +88,4 @@ def mark(request, pk):
         'message':'Something went wrong.',
         'resolved':'true' if (bug_report.resolved) else 'false'
     })
+    

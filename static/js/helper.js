@@ -14,13 +14,14 @@ $(document).ready(function () {
         summon.setAttribute('src', '/static/media/man_noise.wav');
 
         $('#helbert').css({
-            'display':'block'
+            'display':'block',
+            'bottom':'-300'
         })
         $('#helbert').animate({
             'bottom':'-135'
         }, 'slow').delay(3000)
         $('#helbert').animate({
-            'bottom':'0'
+            'bottom':'-5'
         }, 'fast', function() {
             summon.play();
             $('#helbert-help').css({
@@ -45,6 +46,4 @@ $(document).ready(function () {
         })
         $('#helbert-img').off('click');
     }
-
-    //$('#helbert-img').click(helbertClick);
 });  

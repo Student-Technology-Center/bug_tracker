@@ -2,6 +2,8 @@
 
 $(document).ready(function () {
 
+    $('#bug-team').dropdown();
+
     $('#bug-info').keyup(function (){
         var amt = $(this).val()
         $('#info-length').text(amt.length)

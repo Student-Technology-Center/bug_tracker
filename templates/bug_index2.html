@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Submit a bug</title>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>	
+	<script type="text/javascript" src="{% static 'js/bug2.js' %}"></script>	
+	<script type="text/javascript" src="{% static 'js/helper.js' %}"></script>	
+
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bug2.css' %}" />
+
+</head>
+<body>
+	
+<!-- Main body grid -->
+<div class="ui center aligned middle aligned grid">
+	<div class="eight wide column">
+
+		<div class="ui attatched message">
+			<h2 class="ui header">Submit a bug</h2>
+			<p>Fill out the following information to help us track down and resolve any issues at the STC</p>
+		</div>
+		<div class="ui attatched segment">
+			<form class="ui form" action="/bug/bug2/" method="post">
+
+				{% csrf_token %}
+				<div class="ui three column centered grid">
+					<div class="left floated column">
+						{% if form.info.errors %}
+							<div class="ui red basic label">
+								{{ form.info.errors.as_text|cut:"* " }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="column">
+						<div class="ui centered header">
+							{{ form.info.label }}
+						</div>
+					</div>
+					<div class="right floated column">
+						<div style="float: right;" class="ui label"><span id="info-length">0</span>/300</div>
+					</div>	
+				</div>
+				<div class="field">
+					{{ form.info }}
+				</div>
+
+				<div class="ui hidden divider"></div>
+
+				<div class="ui three column centered grid">
+					<div class="left floated column">
+						{% if form.recreate.errors %}
+							<div class="ui red basic label">
+								{{ form.recreate.errors.as_text|cut:"* " }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="column">
+						<div class="ui centered header">
+							{{ form.recreate.label }}
+						</div>
+					</div>
+					<div class="right floated column">
+						<div style="float: right;" class="ui label"><span id="recreate-length">0</span>/300</div>
+					</div>	
+				</div>
+				<div class="field">
+					{{ form.recreate }}
+				</div>
+
+				<div class="ui hidden divider"></div>
+
+				<div class="ui three column centered grid">
+					<div class="left floated column">
+						{% if form.team.errors %}
+							<div class="ui red basic label">
+								{{ form.team.errors.as_text|cut:"* " }}
+							</div>
+						{% endif %}
+					</div>
+					<div class="column">
+						<div class="ui centered header">
+							{{ form.team.label }}
+						</div>
+					</div>
+					<div class="right floated column">
+					</div>	
+				</div>
+				<div class="field">
+					<div class="ui selection dropdown">
+						<input type="hidden" name="{{ form.team.html_name }}">
+						<i class="dropdown icon"></i>
+						<div class="default text">What team does this concern?</div>
+						<div class="menu">
+							{% for choice in form.team.field.choices %}
+								<div class="item" data-value="{{ choice.0 }}">{{ choice.1 }}</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+				<button class="ui primary button" type="submit">Submit</button>
+			</form>
+		</div>
+
+		{% if user.is_superuser %}
+			<form action="/bug/admin/">
+				<button class="ui button">Go to admin page</button>
+			</form>
+		{% endif %}
+	</div>
+</div>
+
+<div id='helbert'>
+    <div id='helbert-help' class="ui message">
+	  <div class="header">
+	    Need some help?
+	  </div>
+	  <p>My names Helbert, and I'm here to help.</p>
+	</div>
+    <img id='helbert-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
+</div>
+<div class="ui top attached button" id='chat-prompt'>
+    <h4 class="ui heading">Live assistance</h4>
+</div>
+
+</body>
+</html>
