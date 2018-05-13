@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Manage Bugs
+{% endblock %}
+
+{% block links %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.ui.accordion')
+	  .accordion();
+});
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="centered row">
+	<!-- Ticker Selector -->
+	<div class="four wide column">
+		<div class="ui attached message">
+			<h4 class="ui header">
+				Bug listing
+			</h4>
+		</div>
+		<div class="ui styled accordion">
+			{% for team in team_info %}
+			<div class="title">
+				<i class="dropdown icon"></i>
+				{{ team.name }}
+				<div style="float:right;" class="ui green label">
+					{{ team.closed|length }}
+				</div>
+				<div style="float:right;" class="ui red label">
+					{{ team.open|length }}
+				</div>
+			</div>
+			<div class="content">
+				<div class="ui list">
+				{% for open in team.open %}
+					<div class="item">
+					    <i class="red bug icon"></i>
+					    <div class="content">
+					      {{ open.pk }}
+					    </div>
+					 </div>
+				{% endfor %}
+				{% for closed in team.closed %}
+					<div class="item">
+					    <i class="green check icon"></i>
+					    <div class="content">
+					      {{ closed.pk }}
+					    </div>
+					 </div>
+				{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- Main view -->
+	<div class="eight wide center aligned column">
+		<div class="ui attached message">
+			<h2 class="ui header">
+				View a bug
+			</h2>
+		</div>
+		<div class="ui attached segment">
+			<div class="ui form">
+				<div class="ui centered header">Description</div>
+	            <textarea class='field' readonly="true" id='bug-info'></textarea>
+	            <div class="ui centered header">Recreaction</div>
+	            <textarea class='field' readonly="true" id='bug-recreate'></textarea>
+	            <div class="ui centered header">Team</div>
+	            <span style='' class='text' id='bug-team'>...</span>
+	        </div>
+		</div>
+	</div>
+
+	<div class="four wide column"></div>
+</div>
+
+
+{% endblock %}

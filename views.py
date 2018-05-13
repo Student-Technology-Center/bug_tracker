@@ -13,7 +13,6 @@ def index(request):
     if request.method == 'POST':
         form = BugForm(request.POST)
         if form.is_valid():
-            print("ITS ALL GOOD")
             data = form.cleaned_data
             new_report = BugReport.objects.create(info=data.get('info'),
                                               recreation=data.get('recreate'),
@@ -39,14 +38,32 @@ def index(request):
 @user_is_email_confirmed
 def admin(request):
     
-    context = { "bugs" : BugReport.objects.all() }
+    """
+    context = { 
+        'teams' : BugReport.TEAM_CHOICES,
+    }
+    """
+    context = {}
+
+    team_info = []
+
+    for k,v in BugReport.TEAM_CHOICES:
+        team_info.append({
+            'name':v,
+            'open':BugReport.objects.filter(team__exact=k).filter(resolved__exact=False),
+            'closed':BugReport.objects.filter(team__exact=k).filter(resolved__exact=True),
+        })
+
+    context.update({'team_info':team_info})
+
+    print(context)
 
     if not request.user.is_superuser:
         redirect('/')
 
     return render(
         request,
-        'bug_admin.html',
+        'bug_admin2.html',
         context
     )
 
