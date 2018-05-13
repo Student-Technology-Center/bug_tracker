@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
-#from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from bug_tracker.models import BugReport
 
 from .forms import BugForm
+from django.contrib.auth.decorators import login_required
+from login.decorators import user_is_email_confirmed
 
+@login_required
+@user_is_email_confirmed
 def index(request):
 
     if request.method == 'POST':
@@ -32,6 +35,8 @@ def index(request):
         context
     )
 
+@login_required
+@user_is_email_confirmed
 def admin(request):
     
     context = { "bugs" : BugReport.objects.all() }
@@ -45,6 +50,8 @@ def admin(request):
         context
     )
 
+@login_required
+@user_is_email_confirmed
 def submitted(request):
 
     context = {}

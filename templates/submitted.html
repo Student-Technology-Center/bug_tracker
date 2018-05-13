@@ -1,23 +1,32 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Thanks!</title>
-	<script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>
+{% block title %}
+Thanks!
+{% endblock %}
 
-	<link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bug2.css' %}" />
+{% block links %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}" />
+{% endblock %}
 
-</head>
-<body>
-<div class="ui center aligned middle aligned grid">
-	<div class="two wide column">
+{% block content %}
 
-		<div class="ui attatched message">
-			<h2 class="ui header">Bug submitted!</h2>
+<div class="centered row">
+	<div class="four wide center aligned column">
+		<div class="ui message">
+			<h2 class="ui header">
+				Thanks for submitting a bug!
+			</h2>
+			<i style="padding-top:10px; padding-bottom:10px;" class="huge icons">
+			  <i class="big red dont icon"></i>
+			  <i class="bug icon"></i>
+			</i>
+			<p>
+				Our best staff will get right on that A.S.A.P!<br>
+				Rest assured, it will be fixed in no time
+			</p>
 		</div>
 	</div>
 </div>
-</body>
-</html>
+
+{% endblock %}
