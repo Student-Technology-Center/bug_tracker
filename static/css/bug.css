@@ -1,49 +1,32 @@
-body {
-    padding: 0;
-    margin: 0;
-
-    background-color: white;
-    font-family: 'Lato', sans-serif;
-
-    display: flex;
-    align-content: center;
-    justify-content: center;
+.column {
+	max-width: 800px;
 }
 
-#bee {
-    z-index: 10;
-    height: 5%;
-    width: 5%;
-
-    margin-top: 0;
-
-    -webkit-animation: spin 10s infinite linear;
+#helbert {
+    display: block;
+    position: fixed;
+    bottom: -300px;
+    left: 0;
+    width: 150px;
+    z-index: 999999999;
 }
 
-@-moz-keyframes spin {
-    from { -moz-transform: rotate(0deg); }
-    to { -moz-transform: rotate(360deg); }
-}
-@-webkit-keyframes spin {
-    from { -webkit-transform: rotate(0deg); }
-    to { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+#helbert-help {	
+    display: none;
+    opacity: 0.0;
+    width:125%;
+    margin-left: 10px;
 }
 
-#body-center {
-    width: 50%;
-    min-width: 250px;
-    max-width: 1000px;
-    height: 100%;
+#chat-prompt {
+    position: fixed;
+    bottom: 0;
+    left: 2%;
+}
 
-    position: absolute;
-    z-index: 50;
-    border-left: 3px solid black;
-    border-right: 3px solid black;
-    text-align: center;
-
-    overflow: hidden;
+#chat-prompt:hover {
+    cursor: pointer;
+    transition: .1s;
+    background-color: black;
+    color: white;
 }
