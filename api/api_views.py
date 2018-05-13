@@ -46,7 +46,8 @@ def get(request, pk):
             'report': str(bug_report.info),
             'recreation': str(bug_report.recreation),
             'team': str(bug_report.team),
-            'full_name': "{} {}".format(bug_report.user.first_name, bug_report.user.last_name)
+            'full_name': "{} {}".format(bug_report.user.first_name, bug_report.user.last_name),
+            'resolved': bool(bug_report.resolved)
         }
     })
 

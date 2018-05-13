@@ -2,11 +2,18 @@
 	max-width: 800px;
 }
 
+#main-panel {
+    min-width: 350px;
+}
+
+#bug-listing {
+    min-width: 300px;
+}
+
 #helbert {
     display: block;
     position: fixed;
     bottom: -300px;
-    left: 0;
     width: 150px;
     z-index: 999999999;
 }

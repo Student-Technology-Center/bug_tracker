@@ -13,7 +13,7 @@ Submit a bug
 
 {% block content %}
 	<div class="centered row">
-		<div class="eight wide center aligned column">
+		<div class="eight wide center aligned column" id="main-panel">
 
 		<div class="ui attached message">
 			<h2 class="ui header">Submit a bug</h2>
@@ -111,10 +111,10 @@ Submit a bug
 </div>
 
 <div id='helbert'>
-	    <div id='helbert-help' class="ui message">
-		  <div class="header">
+	    <div id='helbert-help' class="ui pointing below label">
+		  <h4 class="header">
 		    Need some help?
-		  </div>
+		  </h4>
 		  <p>My names Helbert, how can I be of assistance?</p>
 		</div>
 	    <img id='helbert-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
