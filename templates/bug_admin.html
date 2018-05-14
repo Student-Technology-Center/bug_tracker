@@ -1,57 +1,116 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<html>
-    <head>
-        <title>
-            Admin
-        </title>
+{% block title %}
+Manage Bugs
+{% endblock %}
 
-        <script
-            src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous">
-        </script>
+{% block links %}
+<script src="{% static 'js/bug_admin.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}" />
+{% endblock %}
 
-        <script src="{% static 'js/admin_request.js' %}"> </script>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bug.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bug_admin.css' %}">
-    </head>
+{% block content %}
 
-    <body>
-        <div id='info-lab'>
-            <h2>
-                Click a button to view a bug
-            </h2>
-            <h4>Bug:</h4>
-            <textarea class='text-box' readonly="true" id='bug-info'></textarea>
-            <h4>Recreaction:</h4>
-            <textarea class='text-box' readonly="true" id='bug-recreate'></textarea>
-            <h4>Team assignment:</h4>
-            <span style='' class='text' id='bug-team'>...</span>
-            <h4>Submitted by:</h4>
-            <span style='margin-bottom: 64px' class='text' id='user'>...</span>
+<div class="centered row">
+	<!-- Ticker Selector -->
+	<div class="four wide column" id="bug-listing">
+		<div class="ui attached message">
+			<h4 class="ui header">
+				Bug listing
+			</h4>
+		</div>
+		<div class="ui styled accordion">
+			{% for team in team_info %}
+			<div class="title">
+				<i class="dropdown icon"></i>
+				{{ team.name }}
+				<div style="float:right;" class="ui green label">
+					{{ team.closed|length }}
+				</div>
+				<div style="float:right;" class="ui red label">
+					{{ team.open|length }}
+				</div>
+			</div>
+			<div class="content">
+				<div class="ui list">
+				{% for open in team.open %}
+					<div class="item"  id="bug-id">
+					    <a class="ui label" id="{{ open.pk }}">
+					      <i class="red bug icon"></i>
+					      {{ open.pk }}
+					    </a>
+					 </div>
+				{% endfor %}
+				{% for closed in team.closed %}
+					<div class="item"  id="bug-id">
+					    <a class="ui label" id="{{ closed.pk }}">
+					      <i class="green check icon"></i>
+					      {{ closed.pk }}
+					    </a>
+					 </div>
+				{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
 
-            <h4>Mark as..</h4>
-            <select id='resolved'>
-                <option value='True'>Fixed</option>
-                <option value='False'>Active</option>
-                <option value='delete'>Deleted</option>
-            </select>
-            <br>
-            <br>
-            <input type="submit" class='button' id='resolved-button' />
-        </div>
-        <ul>
-            {% for i in bugs %}
-                {% if i.resolved %}
-                    <li > <button class='bug-button' style='background-color: #5dc16a'>{{ i.pk }}: by {{ i.user.first_name }} {{ i.user.last_name }}</button> <p style='display:none;'>{{i.pk}}</p> </li>
-                {% else %}
-                    <li> <button class='bug-button' style='background-color: #aa4b54'>{{ i.pk }}: by {{ i.user.first_name }} {{ i.user.last_name }} </button> <p style='display:none;'>{{i.pk}}</p> </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </body>
+	<!-- Main view -->
+	<div class="eight wide center aligned column" id="main-panel">
+		<div class="ui attached message">
+			<h2 class="ui header">
+				View a bug
+			</h2>
+			<div class="ui large bottom left attached label">
+				<i class="icon" id="bug-label-icon"></i>
+				<div class="detail" id="bug-label-id">
+				--
+				</div>
+			</div>
+		</div>
+		<div class="ui attached segment">
+			<div class="ui form">
+				<div class="ui centered header">Description</div>
+	            <textarea class='field' rows=5 readonly="true" id='bug-info'></textarea>
+	            <div class="ui centered header">Recreaction</div>
+	            <textarea class='field' rows=5 readonly="true" id='bug-recreate'></textarea>
+	            <div class="ui hidden divider"></div>
+	            <div class="ui grid">
+	            	<div class="centered row">
+		            	<div class="eight wide center aligned column">
+				            <div class="ui header">Team</div>
+				            <span style='' class='text' id='bug-team'>...</span>
+			            </div>
+			            <div class="eight wide center aligned column">
+				            <div class="ui header">Submitted by</div>
+				            <span style='' class='text' id='user'>...</span>
+		            	</div>
+	           	 	</div>
+	           	 	
+	        	</div>
+	        </div>
+		</div>
+		<div class="ui attached segment">
+			<div class="ui grid">
+				<div class="four wide column">
 
-</html>
+				</div>
+				<div class="eight wide column">
+					<button class="ui primary disabled button" id="btn-resolve">Resolved</button>
+					<button class="ui disabled button" id="btn-unresolve">Unresolved</button>
+				</div>
+				<div class="four wide right aligned column">
+					<button class="ui red button" id="btn-delete">Delete</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Padding -->
+	<div class="four wide column"></div>
+</div>
+
+
+{% endblock %}

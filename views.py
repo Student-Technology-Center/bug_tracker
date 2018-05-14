@@ -37,13 +37,6 @@ def index(request):
 @login_required
 @user_is_email_confirmed
 def admin(request):
-    
-    """
-    context = { 
-        'teams' : BugReport.TEAM_CHOICES,
-    }
-    """
-    context = {}
 
     team_info = []
 
@@ -54,7 +47,7 @@ def admin(request):
             'closed':BugReport.objects.filter(team__exact=k).filter(resolved__exact=True),
         })
 
-    context.update({'team_info':team_info})
+    context={'team_info':team_info}
 
     print(context)
 
@@ -63,7 +56,7 @@ def admin(request):
 
     return render(
         request,
-        'bug_admin2.html',
+        'bug_admin.html',
         context
     )
 
