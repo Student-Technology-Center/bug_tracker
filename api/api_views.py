@@ -5,7 +5,8 @@ from bug_tracker.forms import BugForm
 from django import forms
 from django.views.decorators.http import require_http_methods
 
-#Submit a new bug to the database
+# Submit a new bug to the database
+@require_http_methods(['POST'])
 def submit(request):
     info = request.POST.get('info', False)
     recreate = request.POST.get('recreate', False)
@@ -82,16 +83,13 @@ def delete(request, pk):
 
     return JsonResponse({
         'status':'failed',
-        'message':'Something went wrong.',
-        'resolved':'true' if (bug_report.resolved) else 'false'
+        'message':'Something went wrong.'
     })
 
 
 # Update the status of an existing bug
 @require_http_methods(['POST'])
 def update(request):
-
-    context = {}
 
     if not request.user.is_superuser:
         return JsonResponse({
@@ -107,7 +105,7 @@ def update(request):
 
     resolved_bool = True if resolved == 'True' else False
 
-    if resolved:
+    if resolved and bug_report:
         bug_report.resolved = resolved_bool
         bug_report.resolution = resolution
         if resolved_bool:
@@ -122,6 +120,6 @@ def update(request):
         })
 
     return JsonResponse({
-            'status':'failed',
-            'message':'Something went wrong'
-        })
+        'status':'failed',
+        'message':'Something went wrong'
+    })

@@ -12,13 +12,14 @@ Submit a bug
 {% endblock %}
 
 {% block content %}
-	<div class="centered row">
-		<div class="eight wide center aligned column" id="main-panel">
+<div class="centered row">
+	<div class="eight wide center aligned column" id="main-panel">
 
 		<div class="ui attached message">
 			<h2 class="ui header">Submit a bug</h2>
 			<p>Fill out the following information to help us track down and resolve any issues at the STC</p>
 		</div>
+
 		<div class="ui attached segment">
 			<form class="ui form" action="/bug/" method="post">
 
@@ -100,7 +101,7 @@ Submit a bug
 
 				<button class="ui primary button" type="submit">Submit</button>
 			</form>
-		</div>
+		</div> <!-- end attatched segment -->
 
 		{% if user.is_superuser %}
 			<form action="/bug/admin/">
@@ -110,17 +111,18 @@ Submit a bug
 	</div>
 </div>
 
+<!-- Important live assistance features -->
 <div id='helbert'>
-	    <div id='helbert-help' class="ui pointing below label">
-		  <h4 class="header">
-		    Need some help?
-		  </h4>
-		  <p>My names Helbert, how can I be of assistance?</p>
-		</div>
-	    <img id='helbert-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
+    <div id='helbert-help' class="ui pointing below label">
+	  <h4 class="header">
+	    Need some help?
+	  </h4>
+	  <p>My names Helbert, how can I be of assistance?</p>
 	</div>
-	<div class="ui top attached button" id='chat-prompt'>
-	    <h4 class="ui heading">Live assistance</h4>
-	</div>
+    <img id='helbert-img' src='{% static "media/man_1.png" %}' alt='this is a peacock'>
+</div>
+<div class="ui top attached button" id='chat-prompt'>
+    <h4 class="ui heading">Live assistance</h4>
+</div>
 
 {% endblock %}
