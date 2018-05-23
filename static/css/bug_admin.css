@@ -88,3 +88,7 @@ ul li button:focus {
     border-radius: 0.5px;
 }
 
+#resolution-required {
+    visibility: hidden;
+}
+

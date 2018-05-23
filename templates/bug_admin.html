@@ -13,13 +13,15 @@ Manage Bugs
 
 {% block content %}
 
+{% csrf_token %}
+
 <div class="centered row">
 	<!-- Ticker Selector -->
 	<div class="four wide column" id="bug-listing">
 		<div class="ui attached message">
-			<h4 class="ui header">
-				Bug listing
-			</h4>
+			<h2 class="ui centered header">
+				Bugs
+			</h2>
 		</div>
 		<div class="ui styled accordion">
 			{% for team in team_info %}
@@ -92,24 +94,47 @@ Manage Bugs
 	        	</div>
 	        </div>
 		</div>
-		<div class="ui attached segment">
-			<div class="ui grid">
-				<div class="four wide column">
-
-				</div>
-				<div class="eight wide column">
-					<button class="ui primary disabled button" id="btn-resolve">Resolved</button>
-					<button class="ui disabled button" id="btn-unresolve">Unresolved</button>
-				</div>
-				<div class="four wide right aligned column">
-					<button class="ui red button" id="btn-delete">Delete</button>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	<!-- Padding -->
-	<div class="four wide column"></div>
+	<div class="four wide column">
+		<div class="ui attached message">
+			<h2 class="ui centered header">
+				Update
+			</h2>
+		</div>
+		<div class="ui attached center aligned segment">
+			<div class="ui form">
+				<div class="ui three column centered grid">
+					<div class="left floated column">
+						<div class="ui red basic label" id="resolution-required">
+							Required
+						</div>
+					</div>
+					<div class="column">
+						<div class="ui centered header">
+							Resolution
+						</div>
+					</div>
+					<div class="right floated column">
+						<div style="float: right;" class="ui label">
+							<span id="resolution-length">0</span>/300
+						</div>
+					</div>	
+				</div>
+				<div class="field">
+					<textarea rows=5 readonly="true" id='bug-resolution'></textarea>
+				</div>
+				<div class="ui header">Resolved by</div>
+				    <span class='text' id='resolved-by'>...</span>
+				</div>
+				<div class="ui hidden divider"></div>
+				<button class="ui primary disabled button" id="btn-resolve">Resolved</button>
+				<button class="ui disabled button" id="btn-unresolve">Unresolved</button>
+				<button class="ui disabled red button" id="btn-delete">Delete</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 

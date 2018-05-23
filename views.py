@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from bug_tracker.models import BugReport
 
-from .forms import BugForm
+from bug_tracker.forms import BugForm
 from django.contrib.auth.decorators import login_required
 from login.decorators import user_is_email_confirmed
+
+from django.forms import modelformset_factory
 
 @login_required
 @user_is_email_confirmed
@@ -49,8 +51,6 @@ def admin(request):
 
     context={'team_info':team_info}
 
-    print(context)
-
     if not request.user.is_superuser:
         redirect('/')
 
@@ -59,6 +59,7 @@ def admin(request):
         'bug_admin.html',
         context
     )
+    
 
 @login_required
 @user_is_email_confirmed
