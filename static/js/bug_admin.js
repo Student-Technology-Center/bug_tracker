@@ -129,6 +129,8 @@ $(document).ready(function() {
                 $('#bug-team').text('...');
                 $('#user').text('...');
                 $('#resolved-by').text('...');
+                $('#bug-resolution').val('');
+                $('#bug-resolution').attr('readonly','readonly');
             }
         })
     });

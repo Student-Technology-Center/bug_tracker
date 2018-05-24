@@ -15,7 +15,7 @@ Manage Bugs
 
 {% csrf_token %}
 
-<div class="centered row">
+<div class="centered row" id="bug-pane">
 	<!-- Ticker Selector -->
 	<div class="four wide column" id="bug-listing">
 		<div class="ui attached message">
@@ -97,7 +97,7 @@ Manage Bugs
 	</div>
 
 	<!-- Padding -->
-	<div class="four wide column">
+	<div class="four wide column" id="bug-update">
 		<div class="ui attached message">
 			<h2 class="ui centered header">
 				Update

@@ -2,11 +2,20 @@
 	max-width: 800px;
 }
 
+#bug-pane {
+    margin-top: 32px;
+}
+
+.admin-pane {
+    padding-top: 64px;
+}       
+
 #main-panel {
     min-width: 350px;
 }
 
-#bug-listing {
+#bug-listing, #bug-update {
+    margin-top: 64px;
     min-width: 300px;
 }
 
