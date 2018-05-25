@@ -4,19 +4,18 @@
 
 #bug-pane {
     margin-top: 32px;
-}
-
-.admin-pane {
-    padding-top: 64px;
-}       
+    margin-bottom: 32px;
+} 
 
 #main-panel {
+    margin-top: 32px;
     min-width: 350px;
 }
 
 #bug-listing, #bug-update {
     margin-top: 64px;
     min-width: 300px;
+    margin-bottom: 32px;
 }
 
 #helbert {
