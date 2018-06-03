@@ -49,3 +49,7 @@
 #resolution-required {
     display: none;
 }
+
+textarea {
+    resize:none !important;
+}
