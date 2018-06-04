@@ -7,8 +7,9 @@ $(document).ready(function() {
 	$('.ui.dropdown').dropdown();
 
   	// Pull up bug info
-	$('.item').click(function() {
+	$('.bug').click(function() {
         currentPk = $(this).text().trim();
+        console.log(currentPk)
 
         $.ajax({
             type: 'GET',

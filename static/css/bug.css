@@ -53,3 +53,7 @@
 textarea {
     resize:none !important;
 }
+
+.item.bug {
+    margin-left: 24px;
+}

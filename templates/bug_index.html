@@ -103,7 +103,7 @@ Submit a bug
 			</form>
 		</div> <!-- end attatched segment -->
 
-		{% if user.is_superuser %}
+		{% if perms.bug_tracker.bug_admin %}
 			<form action="/bug/admin/">
 				<button style="margin-top: 12px;" class="ui button">Go to admin page</button>
 			</form>

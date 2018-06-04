@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from bug_tracker.models import BugReport
 
 from bug_tracker.forms import BugForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from login.decorators import user_is_email_confirmed
 
 from django.forms import modelformset_factory
@@ -38,16 +38,18 @@ def index(request):
 
 @login_required
 @user_is_email_confirmed
+@permission_required('bug_tracker.bug_admin')
 def admin(request):
 
     team_info = []
 
     for k,v in BugReport.TEAM_CHOICES:
-        team_info.append({
-            'name':v,
-            'open':BugReport.objects.filter(team__exact=k).filter(resolved__exact=False),
-            'closed':BugReport.objects.filter(team__exact=k).filter(resolved__exact=True),
-        })
+        if(request.user.has_perm(BugReport.TEAM_PERMS.get(k))):
+            team_info.append({
+                'name':v,
+                'open':BugReport.objects.filter(team__exact=k).filter(resolved__exact=False),
+                'closed':BugReport.objects.filter(team__exact=k).filter(resolved__exact=True),
+            })
 
     context={'team_info':team_info}
 

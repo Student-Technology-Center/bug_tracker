@@ -23,39 +23,41 @@ Manage Bugs
 				Bugs
 			</h2>
 		</div>
-		<div class="ui styled accordion">
-			{% for team in team_info %}
-			<div class="title">
-				<i class="dropdown icon"></i>
-				{{ team.name }}
-				<div style="float:right;" class="ui green label">
-					{{ team.closed|length }}
+		<div class="ui attached segment">
+			<div class="ui accordion">
+				{% for team in team_info %}
+				<div class="title">
+					<i class="dropdown icon"></i>
+					{{ team.name }}
+					<div style="float:right;" class="ui green label">
+						{{ team.closed|length }}
+					</div>
+					<div style="float:right;" class="ui red label">
+						{{ team.open|length }}
+					</div>
 				</div>
-				<div style="float:right;" class="ui red label">
-					{{ team.open|length }}
+				<div class="content">
+					<div class="ui list">
+					{% for open in team.open %}
+						<div class="item bug"  id="bug-id">
+						    <a class="ui label" id="{{ open.pk }}">
+						      <i class="red bug icon"></i>
+						      {{ open.pk }}
+						    </a>
+						 </div>
+					{% endfor %}
+					{% for closed in team.closed %}
+						<div class="item bug"  id="bug-id">
+						    <a class="ui label" id="{{ closed.pk }}">
+						      <i class="green check icon"></i>
+						      {{ closed.pk }}
+						    </a>
+						 </div>
+					{% endfor %}
+					</div>
 				</div>
-			</div>
-			<div class="content">
-				<div class="ui list">
-				{% for open in team.open %}
-					<div class="item"  id="bug-id">
-					    <a class="ui label" id="{{ open.pk }}">
-					      <i class="red bug icon"></i>
-					      {{ open.pk }}
-					    </a>
-					 </div>
 				{% endfor %}
-				{% for closed in team.closed %}
-					<div class="item"  id="bug-id">
-					    <a class="ui label" id="{{ closed.pk }}">
-					      <i class="green check icon"></i>
-					      {{ closed.pk }}
-					    </a>
-					 </div>
-				{% endfor %}
-				</div>
 			</div>
-			{% endfor %}
 		</div>
 	</div>
 
