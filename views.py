@@ -8,6 +8,8 @@ from login.decorators import user_is_email_confirmed
 
 from django.forms import modelformset_factory
 
+from .helpers import send_bug_notification
+
 @login_required
 @user_is_email_confirmed
 def index(request):
@@ -20,6 +22,7 @@ def index(request):
                                               recreation=data.get('recreate'),
                                               user=request.user,
                                               team=data.get('team'))
+            send_bug_notification(new_report)
             return HttpResponseRedirect('/bug/submitted/')
 
     else: 

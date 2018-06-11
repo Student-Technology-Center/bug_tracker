@@ -64,10 +64,10 @@ def get(request, pk):
 # Delete an existing bug
 def delete(request, pk):
 
-    if not request.user.is_superuser:
+    if not request.user.has_perm('bug_tracker.delete_bugreport'):
         return JsonResponse({
             'status':'failed',
-            'message':"User isn't admin.",
+            'message':"User doesn't have permission for this",
             'resolved':'false'
         })
 

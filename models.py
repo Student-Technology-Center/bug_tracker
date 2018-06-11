@@ -10,10 +10,10 @@ class BugReport(models.Model):
     other       = 'OTHER'
 
     TEAM_CHOICES = (
-		(web, 'Webmaster'),
+		(web, 'Website Staff'),
 		(hardware, 'Hardware Team'),
         (dev, 'Dev Team'),
-		(other, 'Other'),
+		(other, 'Miscellaneous Bugs'),
     )
 
     TEAM_PERMS = {

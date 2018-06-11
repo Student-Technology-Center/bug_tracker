@@ -9,7 +9,6 @@ $(document).ready(function() {
   	// Pull up bug info
 	$('.bug').click(function() {
         currentPk = $(this).text().trim();
-        console.log(currentPk)
 
         $.ajax({
             type: 'GET',

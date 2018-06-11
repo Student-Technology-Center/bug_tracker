@@ -29,10 +29,10 @@ Manage Bugs
 				<div class="title">
 					<i class="dropdown icon"></i>
 					{{ team.name }}
-					<div style="float:right;" class="ui green label">
+					<div id="open-count" style="float:right;" class="ui green label">
 						{{ team.closed|length }}
 					</div>
-					<div style="float:right;" class="ui red label">
+					<div id="closed-count" style="float:right;" class="ui red label">
 						{{ team.open|length }}
 					</div>
 				</div>
