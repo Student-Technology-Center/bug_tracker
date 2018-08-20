@@ -11,9 +11,6 @@ def submit(request):
     info = request.POST.get('info', False)
     recreate = request.POST.get('recreate', False)
     team = request.POST.get('team', False)
-
-    for i in BugReport.objects.all():
-        print("{} by {} for {}: {} recreated by {}".format(i.pk, i.user.username, i.team, i.info, i.recreation))
     
     if (len(info) > 300 or 
         len(recreate) > 300 or
